@@ -1,0 +1,45 @@
+<div class="container-fluid">
+	<h4 class="mb-4 p-0">{{'list-brand' | translate}}</h4>
+	<div class="d-flex justify-content-between align-items-center gap-3">
+		<div class="input-dark w-full">
+			<input type="text"
+				class="form-control"
+				[(ngModel)]="search"
+				(ngModelChange)="this.searchUpdate.next($event)"
+				placeholder="{{'search-brand' | translate}}">
+		</div>
+		<div>
+			<button class="button-pink fs-14"
+				(click)="openDialogBrand(false,null)">{{'new-brand' | translate}}</button>
+		</div>
+	</div>
+	<div class="mt-4 table-responsive">
+		<table class="table table-dark table-hover">
+			<thead>
+				<tr>
+					<th width="20px">#</th>
+					<th>{{'name' | translate}}</th>
+					<th>{{'status' | translate}}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngIf="!brands || brands.length === 0">
+					<td colspan="3"
+						class="text-center no-data">{{'no-data' | translate}}</td>
+				</tr>
+				<tr *ngFor="let brand of brands; let i = index">
+					<td>{{ i + 1 }}</td>
+					<td>
+						<span class="text-link"
+							(click)="openDialogBrand(true,brand)">{{ brand.name }}</span>
+					</td>
+					<td>
+						{{ brand.is_active == 1 ? ('active' | translate) : ('inactive' | translate) }}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+</div>

@@ -1,0 +1,57 @@
+<div *ngIf="loading"
+	class="overlay">
+	<mat-progress-bar class="loading"
+		mode="indeterminate"></mat-progress-bar>
+</div>
+<div class="container-fluid mt-3 mb-5 toolbar">
+	<div class="d-flex justify-content-between gap-2">
+		<div>
+			<button class="button-primary"
+				(click)="toggleSidenav()">
+				<img [src]="isSidenavOpen ? 'assets/images/icons/close.svg' : 'assets/images/icons/menu.svg'"
+					alt="">
+			</button>
+		</div>
+		<div class="d-flex gap-2">
+			<div>
+				<button class="button-primary gap-2"
+					[matMenuTriggerFor]="menuLang">
+					<img class="rounded"
+						src="assets/images/icons/{{currentLanguage}}.svg"
+						alt="">
+					<span class="lh-1 fw-bold uppercase">{{currentLanguage}}</span>
+				</button>
+			</div>
+			<div>
+				<button class="button-primary">
+					<img src="assets/images/icons/notif.svg"
+						alt="">
+				</button>
+			</div>
+			<div>
+				<button class="button-primary"
+					(click)="openDialogAccount()">
+					<img src="assets/images/icons/user.svg"
+						alt="">
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<mat-menu #menuLang="matMenu"
+	xPosition="before">
+	<div>
+		<button class="button button-default w-100 gap-2"
+			(click)="changeLanguage('id')">
+			<img src="assets/images/icons/id.svg"
+				alt="">
+			<div>ID</div>
+		</button>
+		<button class="button button-default w-100 gap-2"
+			(click)="changeLanguage('en')">
+			<img src="assets/images/icons/en.svg"
+				alt="">
+			<div>EN</div>
+		</button>
+	</div>
+</mat-menu>

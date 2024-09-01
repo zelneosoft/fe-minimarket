@@ -1,0 +1,55 @@
+body {
+	font-family: 'Plus Jakarta Sans';
+}
+
+.to-1 {
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.to-2 {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.font-primary {
+	font-family: 'Plus Jakarta Sans';
+}
+
+.uppercase {
+	text-transform: uppercase;
+}
+
+.fw-bold {
+	font-weight: bold;
+}
+
+.fs-8 {
+	font-size: 8px;
+}
+
+.fs-10 {
+	font-size: 10px;
+}
+
+.fs-12 {
+	font-size: 12px;
+}
+
+.fs-14 {
+	font-size: 14px;
+}
+
+.fs-16 {
+	font-size: 16px;
+}
+
+.fs-18 {
+	font-size: 18px;
+}

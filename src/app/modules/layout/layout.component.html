@@ -1,0 +1,17 @@
+<mat-drawer-container class="layout-container"
+	autosize>
+	<mat-drawer #drawer
+		class="layout-sidenav"
+		[mode]="isSidenavMode"
+		[opened]="isSidenavOpen"
+		(openedChange)="onDrawerOpenedChange($event)">
+		<app-sidebar (menuClicked)="toggleSidenav()"></app-sidebar>
+	</mat-drawer>
+
+	<div class="layout-sidenav-content">
+		<app-toolbar (sidenavToggle)="toggleSidenav()"
+			[isSidenavOpen]="isSidenavOpen"></app-toolbar>
+		<router-outlet></router-outlet>
+	</div>
+
+</mat-drawer-container>

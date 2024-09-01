@@ -1,0 +1,63 @@
+@import '~@angular/material/theming';
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import 'assets/scss/utils/fonts';
+@import 'assets/scss/utils/typography';
+@import 'assets/scss/utils/color';
+@import 'assets/scss/components/sidebar';
+@import 'assets/scss/components/material';
+@import 'assets/scss/components/button';
+@import 'assets/scss/components/expantion';
+@import 'assets/scss/components/carousel';
+@import 'assets/scss/components/card';
+@import 'assets/scss/components/table';
+@import 'assets/scss/components/input';
+@import 'assets/scss/components/dialog';
+@import 'assets/scss/components/snackbar';
+
+$dark-theme-primary: mat-palette($mat-indigo);
+$dark-theme-accent: mat-palette($mat-pink, A200, A100, A400);
+$dark-theme-warn: mat-palette($mat-deep-orange);
+$dark-theme: mat-dark-theme($dark-theme-primary, $dark-theme-accent, $dark-theme-warn);
+
+@include angular-material-theme($dark-theme);
+
+:root {
+	--background: #303030;
+	--warna-latar-card: #ffffff;
+	--warna-text: black;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+}
+
+textarea:focus,
+textarea.form-control:focus,
+input.form-control:focus,
+input[type=text]:focus,
+input[type=checkbox]:focus,
+input[type=password]:focus,
+input[type=email]:focus,
+input[type=number]:focus,
+[type=text].form-control:focus,
+[type=password].form-control:focus,
+[type=email].form-control:focus,
+[type=tel].form-control:focus,
+[contenteditable].form-control:focus {
+	box-shadow: none !important;
+	outline: none !important;
+}
+
+.mat-progress-spinner circle,
+.mat-spinner circle {
+	stroke: white !important;
+}
+
+.loading .mat-progress-bar-fill::after {
+	background-color: #EB395A !important;
+}

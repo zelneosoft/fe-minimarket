@@ -1,0 +1,58 @@
+<div class="container-login">
+	<div class="form-login card-custom">
+		<div class="card-body">
+			<div class="mb-3 text-center">
+				<img style="width: 150px;"
+					src="assets/images/icons/key.svg"
+					alt="">
+			</div>
+			<div class="mb-4 input-dark">
+				<label for="input-email"
+					class="form-label">{{ 'email-username' | translate }}</label>
+				<input type="text"
+					class="form-control"
+					(keyup.enter)="submit()"
+					id="input-email"
+					placeholder="{{ 'email-username' | translate }}"
+					[(ngModel)]="form.email">
+				<span *ngIf="!formValid.email"
+					class="cl-pink fs-10">Please enter your email</span>
+			</div>
+			<div class="mb-4 input-dark">
+				<label for="input-password"
+					class="form-label">{{ 'password' | translate }}</label>
+				<input type="{{ showPassword ? 'text' : 'password' }}"
+					class="form-control"
+					(keyup.enter)="submit()"
+					id="input-password"
+					placeholder="{{ 'password' | translate }}"
+					[(ngModel)]="form.password">
+				<span *ngIf="!formValid.password"
+					class="cl-pink fs-10">Please enter your password</span>
+			</div>
+			<div class="mb-3 form-check">
+				<input class="form-check-input"
+					type="checkbox"
+					value=""
+					id="show-pwd"
+					(change)="togglePasswordVisibility()">
+				<label class="form-check-label"
+					for="show-pwd">
+					{{ 'show-password' | translate }}
+				</label>
+			</div>
+			<div class="mb-3">
+				<button (click)="submit()"
+					class="button-pink btn-block">
+					<div class="d-flex justify-content-center align-items-center">
+						<div *ngIf="loadingBtn"
+							class="me-2">
+							<mat-spinner diameter="20"></mat-spinner>
+						</div>
+						<div>{{ 'login' | translate }}</div>
+					</div>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

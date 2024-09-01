@@ -1,0 +1,22 @@
+.logo-wrapper {
+	width: 100%;
+	text-align: center;
+
+	img {
+		width: 100px;
+	}
+}
+
+.menu {
+	border-radius: 20px;
+	padding: 10px;
+	cursor: pointer;
+
+	&:hover {
+		background-color: #eb395a50;
+	}
+
+	&.active {
+		background-color: #EB395A;
+	}
+}

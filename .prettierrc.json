@@ -1,0 +1,69 @@
+{
+    "tabWidth": 4,
+    "bracketSameLine": false,
+    "bracketSpacing": true,
+    "singleQuote": true,
+    "trailingComma": "none",
+    "printWidth": 120,
+    "semi": true,
+    "plugins": [
+        "./node_modules/prettier-plugin-multiline-arrays"
+    ],
+    "overrides": [
+        {
+            "files": [
+                "*.json",
+                ".babelrc"
+            ],
+            "options": {
+                "parser": "json-stringify"
+            }
+        },
+        {
+            "files": [
+                "*.jsonc",
+                "tsconfig*.json"
+            ],
+            "options": {
+                "parser": "json"
+            }
+        },
+        {
+            "files": [
+                "*.js",
+                "*.cjs",
+                "*.mjs"
+            ],
+            "options": {
+                "parser": "babel"
+            }
+        },
+        {
+            "files": [
+                "*.ts"
+            ],
+            "options": {
+                "parser": "typescript"
+            }
+        },
+        {
+            "files": [
+                "*.html"
+            ],
+            "options": {
+                "parser": "html",
+                "attributeGroups": [
+                    "$CLASS",
+                    "$ID",
+                    "$ANGULAR_ELEMENT_REF",
+                    "$ANGULAR_STRUCTURAL_DIRECTIVE",
+                    "$ANGULAR_ANIMATION",
+                    "$ANGULAR_ANIMATION_INPUT",
+                    "$ANGULAR_TWO_WAY_BINDING",
+                    "$ANGULAR_INPUT",
+                    "$ANGULAR_OUTPUT"
+                ]
+            }
+        }
+    ]
+}

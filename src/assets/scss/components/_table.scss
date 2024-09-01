@@ -1,0 +1,38 @@
+.table-responsive {
+	border-radius: 10px !important;
+}
+
+.table-dark th,
+.table-dark td,
+.table-dark thead th {
+	border-color: #303030;
+}
+
+.table-dark th {
+	background-color: #EB395A;
+}
+
+.table-dark tbody+tbody,
+.table-dark td,
+.table-dark th,
+.table-dark thead th {
+	border-color: #303030;
+}
+
+.table-dark tbody tr:nth-of-type(odd) {
+	background-color: #303030;
+}
+
+.table-dark tbody tr:hover {
+	background-color: #2c2c2c;
+}
+
+.table-dark tbody tr:last-child {
+	background-color: #FF0000 !important;
+	color: #FFFFFF;
+}
+
+.no-data {
+	height: 100px;
+	vertical-align: middle;
+}

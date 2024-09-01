@@ -1,0 +1,28 @@
+.input-dark {
+	.form-label {
+		font-size: 14px;
+	}
+
+	input {
+		background-color: #495057;
+		border-radius: 15px;
+		color: #ffffff;
+		border-color: #343a40;
+		padding: 10px 15px;
+
+		&:focus {
+			outline: none !important;
+			border-color: #343a40 !important;
+			color: #ffffff !important;
+			background-color: #495057 !important;
+		}
+	}
+
+	input::placeholder {
+		color: #969696;
+	}
+}
+
+.form-check-label {
+	font-size: 14px;
+}

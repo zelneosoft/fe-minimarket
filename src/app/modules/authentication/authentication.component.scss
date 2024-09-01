@@ -1,0 +1,21 @@
+.container-login {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	background-color: var(--background);
+
+	.form-login {
+		width: 400px;
+	}
+}
+
+.input-dark {
+	position: relative;
+}
+
+.input-dark span {
+	position: absolute;
+	bottom: -15px;
+	left: 0;
+}
