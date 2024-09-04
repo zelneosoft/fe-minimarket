@@ -3,5 +3,8 @@ export interface Branch {
 	name: string;
 	address: string;
 	maps: string;
+	email: string;
+	phone: string;
+	pic: string;
 	is_active: number;
 }

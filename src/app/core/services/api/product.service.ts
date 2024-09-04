@@ -5,6 +5,7 @@ import { environment } from '../../../../environments/environment';
 import { BearerHandler } from '../../handlers/bearer.hendler';
 import { Brand } from '../../models/brand.model';
 import { Category } from '../../models/category.model';
+import { Product, ProductResponse } from '../../models/product.model';
 import { toHttpParams } from '../../utils/http.params';
 
 @Injectable({
@@ -44,5 +45,22 @@ export class ProductService {
 
 	updateBrand(brand: Brand): Observable<{ data: Category }> {
 		return this.http.put<{ data: Category }>(`${environment.api.url}${this.root}/brand/${brand.id}`, brand);
+	}
+
+	insertProduct(product: Product): Observable<{ data: Product }> {
+		return this.http.post<{ data: Product }>(`${environment.api.url}${this.root}`, product);
+	}
+
+	updateProduct(product: Product): Observable<{ data: Product }> {
+		return this.http.put<{ data: Product }>(`${environment.api.url}${this.root}/${product.id}`, product);
+	}
+
+	getProduct(params: any): Observable<{ data: ProductResponse[] }> {
+		const httpParams = toHttpParams(params);
+		return this.http.get<{ data: ProductResponse[] }>(`${environment.api.url}${this.root}/`, { params: httpParams });
+	}
+
+	getProductById(id: number): Observable<{ data: ProductResponse[] }> {
+		return this.http.get<{ data: ProductResponse[] }>(`${environment.api.url}${this.root}/${id}`);
 	}
 }

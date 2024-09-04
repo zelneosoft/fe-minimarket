@@ -4,7 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { BrandComponent } from './pages/brand/brand.component';
 import { CategoryComponent } from './pages/category/category.component';
 import { EmployeComponent } from './pages/employe/employe.component';
+import { CreateProductComponent } from './pages/product/create-product/create-product.component';
 import { ProductComponent } from './pages/product/product.component';
+import { UpdateProductComponent } from './pages/product/update-product/update-product.component';
 
 const routes: Routes = [
 	{
@@ -14,6 +16,14 @@ const routes: Routes = [
 	{
 		path: 'products',
 		component: ProductComponent
+	},
+	{
+		path: 'products/create',
+		component: CreateProductComponent
+	},
+	{
+		path: 'products/edit',
+		component: UpdateProductComponent
 	},
 	{
 		path: 'brand',

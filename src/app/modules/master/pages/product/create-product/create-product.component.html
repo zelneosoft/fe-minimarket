@@ -1,0 +1,80 @@
+<div class="container-fluid">
+	<h4 class="mb-4 p-0">{{'new-product' | translate}}</h4>
+	<div class="d-flex justify-content-between align-items-center gap-3">
+	</div>
+
+	<div class="row">
+		<div class="col-12 col-md-6">
+			<div class="mb-3 input-dark">
+				<label for="barcode"
+					class="block fs-12 mb-1">{{'barcode' | translate}}</label>
+				<input type="text"
+					id="barcode"
+					autocomplete="off"
+					[(ngModel)]="form.barcode"
+					[ngClass]="!formValid.barcode ? 'border border-danger' : ''"
+					class="form-control">
+			</div>
+			<div class="mb-3 input-dark">
+				<label for="name"
+					class="block fs-12 mb-1">{{'name' | translate}}</label>
+				<input type="text"
+					id="name"
+					[(ngModel)]="form.name"
+					autocomplete="off"
+					autocapitalize="words"
+					[ngClass]="!formValid.name ? 'border border-danger' : ''"
+					class="form-control">
+			</div>
+			<div class="mb-3 input-dark">
+				<label for="description"
+					class="block fs-12 mb-1">{{'description' | translate}}</label>
+				<input type="text"
+					autocapitalize="words"
+					id="description"
+					[(ngModel)]="form.description"
+					class="form-control">
+			</div>
+		</div>
+		<div class="col-12 col-md-6">
+			<div class="mb-3 input-dark">
+				<label for="category"
+					class="block fs-12 mb-1">{{ 'category' | translate }}</label>
+				<select id="category"
+					[(ngModel)]=form.category_id
+					[ngClass]="!formValid.category ? 'border border-danger' : ''"
+					class="form-control">
+					<option value="0">-</option>
+					<option *ngFor="let category of categories"
+						[value]="category.id">
+						{{ category.name }}
+					</option>
+				</select>
+			</div>
+			<div class="mb-3 input-dark">
+				<label for="brand"
+					class="block fs-12 mb-1">{{ 'brand' | translate }}</label>
+				<select id="brand"
+					[(ngModel)]="form.brand_id"
+					[ngClass]="!formValid.brand ? 'border border-danger' : ''"
+					class="form-control">
+					<option value="0">-</option>
+					<option *ngFor="let brand of brands"
+						[value]="brand.id">
+						{{ brand.name }}
+					</option>
+				</select>
+			</div>
+		</div>
+		<div class="col-12">
+			<div class="d-flex gap-2">
+				<button (click)="submit()"
+					class="button-blue">{{'save' | translate}}</button>
+				<button (click)="close()"
+					class="button-pink">{{'cancel' | translate}}</button>
+
+			</div>
+		</div>
+	</div>
+
+</div>

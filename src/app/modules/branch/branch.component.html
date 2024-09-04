@@ -1,1 +1,54 @@
-<p>branch works!</p>
+<div class="container-fluid">
+	<h4 class="mb-4 p-0">{{'list-branch' | translate}}</h4>
+	<div class="d-flex justify-content-between align-items-center gap-3">
+		<div class="input-dark w-full">
+			<input type="text"
+				class="form-control"
+				[(ngModel)]="search"
+				(ngModelChange)="this.searchUpdate.next($event)"
+				placeholder="{{'search-branch' | translate}}">
+		</div>
+		<div>
+			<button class="button-blue fs-14"
+				[routerLink]="['/branch/create']">{{'new-branch' | translate}}</button>
+		</div>
+	</div>
+	<div class="mt-4 table-responsive">
+		<table class="table table-dark table-hover">
+			<thead>
+				<tr>
+					<th width="20px">#</th>
+					<th>{{'name' | translate}}</th>
+					<th>{{'address' | translate}}</th>
+					<th>{{'pic_branch' | translate}}</th>
+					<th>{{'status' | translate}}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngIf="!branch || branch.length === 0">
+					<td colspan="5"
+						class="text-center no-data">{{'no-data' | translate}}</td>
+				</tr>
+				<tr *ngFor="let branch of branch; let i = index">
+					<td>{{ i + 1 }}</td>
+					<td>
+						<span class="text-link"
+							[routerLink]="['/branch/edit']"
+							[queryParams]="{ id: branch.id }">{{ branch.name }}</span>
+					</td>
+					<td>
+						{{ branch.address }}
+					</td>
+					<td>
+						{{ branch.pic }}
+					</td>
+					<td>
+						{{ branch.is_active == 1 ? ('active' | translate) : ('inactive' | translate) }}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+</div>

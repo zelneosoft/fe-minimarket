@@ -7,7 +7,8 @@
 				placeholder="{{'search-product' | translate}}">
 		</div>
 		<div>
-			<button class="button-blue">{{'new-product' | translate}}</button>
+			<button [routerLink]="['/master/products/create']"
+				class="button-blue">{{'new-product' | translate}}</button>
 		</div>
 	</div>
 	<div class="mt-4 table-responsive">
@@ -17,80 +18,28 @@
 					<th width="20px">#</th>
 					<th>{{'barcode' | translate}}</th>
 					<th>{{'name' | translate}}</th>
+					<th>{{'category' | translate}}</th>
+					<th>{{'brand' | translate}}</th>
 					<th>{{'price' | translate}}</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>1</td>
-					<td>99786787883245234</td>
-					<td>Detergen Daia Bubuk 150ML</td>
-					<td>Rp. 20.000 ,-</td>
+				<tr *ngIf="!products || products.length === 0">
+					<td colspan="6"
+						class="text-center">{{'no-data' | translate}}</td>
 				</tr>
-				<tr>
-					<td>2</td>
-					<td>99786787883245234</td>
-					<td>Detergen Daia Bubuk 150ML</td>
-					<td>Rp. 20.000 ,-</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>99786787883245234</td>
-					<td>Detergen Daia Bubuk 150ML</td>
-					<td>Rp. 20.000 ,-</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>99786787883245234</td>
-					<td>Detergen Daia Bubuk 150ML</td>
-					<td>Rp. 20.000 ,-</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>99786787883245234</td>
-					<td>Detergen Daia Bubuk 150ML</td>
-					<td>Rp. 20.000 ,-</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>99786787883245234</td>
-					<td>Detergen Daia Bubuk 150ML</td>
-					<td>Rp. 20.000 ,-</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>99786787883245234</td>
-					<td>Detergen Daia Bubuk 150ML</td>
-					<td>Rp. 20.000 ,-</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>99786787883245234</td>
-					<td>Detergen Daia Bubuk 150ML</td>
-					<td>Rp. 20.000 ,-</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>99786787883245234</td>
-					<td>Detergen Daia Bubuk 150ML</td>
-					<td>Rp. 20.000 ,-</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>99786787883245234</td>
-					<td>Detergen Daia Bubuk 150ML</td>
-					<td>Rp. 20.000 ,-</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>99786787883245234</td>
-					<td>Detergen Daia Bubuk 150ML</td>
-					<td>Rp. 20.000 ,-</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>99786787883245234</td>
-					<td>Detergen Daia Bubuk 150ML</td>
+				<tr *ngFor="let product of products; let i = index">
+					<td>
+						{{ i + 1 }}
+					</td>
+					<td>
+						<span class="text-link"
+							[routerLink]="['/master/products/edit']"
+							[queryParams]="{ id: product.id }">{{product.barcode}}</span>
+					</td>
+					<td>{{product.name}}</td>
+					<td>{{product.category.name}}</td>
+					<td>{{product.brand.name}}</td>
 					<td>Rp. 20.000 ,-</td>
 				</tr>
 			</tbody>

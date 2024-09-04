@@ -24,11 +24,15 @@ export class BranchService {
 		return this.http.get<{ data: Branch[] }>(`${environment.api.url}${this.root}`, { params: httpParams });
 	}
 
-	insertCategory(branch: Branch): Observable<{ data: Branch }> {
+	getBranchById(id: number): Observable<{ data: Branch[] }> {
+		return this.http.get<{ data: Branch[] }>(`${environment.api.url}${this.root}/${id}`);
+	}
+
+	insertBranch(branch: Branch): Observable<{ data: Branch }> {
 		return this.http.post<{ data: Branch }>(`${environment.api.url}${this.root}`, branch);
 	}
 
-	updateCategory(branch: Branch): Observable<{ data: Branch }> {
+	updateBranch(branch: Branch): Observable<{ data: Branch }> {
 		return this.http.put<{ data: Branch }>(`${environment.api.url}${this.root}/${branch.id}`, branch);
 	}
 }

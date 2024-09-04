@@ -50,7 +50,7 @@ export function createTranslateLoader(http: HttpClient) {
 			provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
 			useValue: {
 				duration: 3000,
-				horizontalPosition: 'end',
+				horizontalPosition: 'center',
 				verticalPosition: 'top'
 			}
 		}
