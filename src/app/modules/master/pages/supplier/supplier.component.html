@@ -1,0 +1,52 @@
+<div class="container-fluid">
+	<h4 class="mb-4 p-0">{{'list-supplier' | translate}}</h4>
+	<div class="d-flex justify-content-between align-items-center gap-3">
+		<div class="input-dark w-full">
+			<input type="text"
+				class="form-control"
+				[(ngModel)]="search"
+				(ngModelChange)="this.searchUpdate.next($event)"
+				placeholder="{{'search-supplier' | translate}}">
+		</div>
+		<div>
+			<button class="button-blue fs-14"
+				(click)="openDialogCategory(false,null)">{{'new-supplier' | translate}}</button>
+		</div>
+	</div>
+	<div class="mt-4 table-responsive">
+		<table class="table table-dark table-hover">
+			<thead>
+				<tr>
+					<th width="20px">#</th>
+					<th>{{'name' | translate}}</th>
+					<th class="text-center">{{'address' | translate}}</th>
+					<th class="text-center">{{'phone' | translate}}</th>
+					<th class="text-center">{{'status' | translate}}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngIf="!supplier || supplier.length === 0">
+					<td colspan="5"
+						class="text-center">{{'no-data' | translate}}</td>
+				</tr>
+				<tr *ngFor="let category of supplier; let i = index">
+					<td>{{ i + 1 }}</td>
+					<td><span class="text-link"
+							(click)="openDialogCategory(true,category)">{{ category.name }}</span>
+					</td>
+					<td class="text-center">
+						{{ category.address || "-" }}
+					</td>
+					<td class="text-center">
+						{{ category.phone || "-" }}
+					</td>
+					<td class="text-center">
+						{{ category.is_active == 1 ? ('active' | translate) : ('inactive' | translate) }}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+</div>

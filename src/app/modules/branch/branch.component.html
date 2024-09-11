@@ -37,10 +37,10 @@
 							[queryParams]="{ id: branch.id }">{{ branch.name }}</span>
 					</td>
 					<td>
-						{{ branch.address }}
+						{{ branch.address || "-" }}
 					</td>
 					<td>
-						{{ branch.pic }}
+						{{ branch.pic || "-" }}
 					</td>
 					<td>
 						{{ branch.is_active == 1 ? ('active' | translate) : ('inactive' | translate) }}

@@ -10,11 +10,27 @@
 	"staff": "Employes",
 	"brand": "Brand",
 	"branch": "Branches",
+
 	"warehouse": "Warehouse",
+	"list-warehouse": "List Warehouse",
+	"new-warehouse": "Create Warehouse",
+	"search-warehouse": "Search Warehouse",
+
 	"report": "Reports",
 	"transaction": "Transaction",
 	"sales-order": "Sales Order",
+	"sales": "Sales",
+
+	"purchase": "Purchase",
+	"list-po": "List Purchase Order (PO)",
+	"new-po": "Create PO",
+	"search-po-number": "Search PO number",
+	"add-more-product": "Add more product",
+
 	"purchase-order": "Purchase Order",
+	"purchase-return": "Purchase Return",
+	"goods-receipt": "Goods Receipt",
+
 	"check-price": "Check Price",
 	"list-product": "List Product(s)",
 	"new-product": "Create Product",
@@ -30,6 +46,12 @@
 	"maps": "Maps",
 	"phone": "Phone",
 	"email": "Email",
+
+	"supplier": "Supplier",
+	"list-supplier": "List Supplier(s)",
+	"new-supplier": "Create Supplier",
+	"update-supplier": "Update Supplier",
+	"search-supplier": "Search supplier",
 
 	"list-category": "List Categories",
 	"new-category": "Create Category",

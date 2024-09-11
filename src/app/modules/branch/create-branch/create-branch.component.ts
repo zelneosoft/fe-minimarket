@@ -27,6 +27,7 @@ export class CreateBranchComponent implements OnInit {
 	};
 
 	ready = false;
+	selectedBranches: number[] = [];
 	constructor(
 		private branchService: BranchService,
 		private router: Router,

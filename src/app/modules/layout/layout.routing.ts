@@ -17,8 +17,16 @@ const routes: Routes = [
 				loadChildren: () => import('../master/master.module').then((module) => module.MasterModule)
 			},
 			{
+				path: 'purchase',
+				loadChildren: () => import('../purchase/purchase.module').then((module) => module.PurchaseModule)
+			},
+			{
 				path: 'branch',
 				loadChildren: () => import('../branch/branch.module').then((module) => module.BranchModule)
+			},
+			{
+				path: 'warehouse',
+				loadChildren: () => import('../warehouse/warehouse.module').then((module) => module.WarehouseModule)
 			},
 			// initial another root with authenticator
 		]

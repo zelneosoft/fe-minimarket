@@ -10,11 +10,27 @@
 	"staff": "Karyawan",
 	"brand": "Merek",
 	"branch": "Cabang",
+
 	"warehouse": "Gudang",
+	"list-warehouse": "Daftar Gudang",
+	"new-warehouse": "Buat Gudang",
+	"search-warehouse": "Cari Gudang",
+
 	"report": "Laporan",
 	"transaction": "Transaksi",
-	"sales-order": "Penjualan",
-	"purchase-order": "Pembelian",
+	"sales-order": "Transaksi Penjualan",
+	"sales": "Penjualan",
+
+	"purchase": "Pembelian",
+	"list-po": "Daftar Pembelian (PO)",
+	"new-po": "Buat PO",
+	"search-po-number": "Cari nomor PO",
+	"add-more-product": "Tambah produk lainnya",
+
+	"purchase-order": "Transaksi Pembelian",
+	"purchase-return": "Pengembalian Barang",
+	"goods-receipt": "Penerimaan Barang",
+
 	"check-price": "Cek Harga",
 	"list-product": "Daftar Produk",
 	"new-product": "Buat Produk",
@@ -30,6 +46,12 @@
 	"maps": "Maps",
 	"phone": "Telp",
 	"email": "Email",
+
+	"supplier": "Pemasok",
+	"list-supplier": "Daftar Pemasok",
+	"new-supplier": "Buat Pemasok",
+	"update-supplier": "Perbarui Pemasok",
+	"search-supplier": "Cari pemasok",
 
 	"list-category": "Daftar Kategori",
 	"new-category": "Buat Kategori",

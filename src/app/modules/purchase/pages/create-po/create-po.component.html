@@ -1,0 +1,167 @@
+<div class="container-fluid">
+	<h4 class="mb-4 p-0">{{'new-po' | translate}}</h4>
+	<div class="d-flex justify-content-between align-items-center gap-3">
+	</div>
+
+	<div class="row">
+		<div class="col-12 col-md-4 col-sm-6">
+			<div class="mb-3 input-dark">
+				<label for="barcode"
+					class="block fs-12 mb-1">Date *</label>
+				<input type="text"
+					id="barcode"
+					autocomplete="off"
+					class="form-control">
+			</div>
+			<div class="mb-3 input-dark">
+				<label for="category"
+					class="block fs-12 mb-1">Supplier *</label>
+				<select id="category"
+					[(ngModel)]=form.category_id
+					class="form-control">
+					<option value="0">-</option>
+
+				</select>
+			</div>
+			<div class="mb-3 input-dark">
+				<label for="barcode"
+					class="block fs-12 mb-1">Supplier Address</label>
+				<input type="text"
+					id="barcode"
+					readonly
+					autocomplete="off"
+					class="form-control">
+			</div>
+		</div>
+		<div class="col-12 col-md-4 col-sm-6">
+			<div class="mb-3 input-dark">
+				<label for="category"
+					class="block fs-12 mb-1">Branch *</label>
+				<select id="category"
+					[(ngModel)]=form.category_id
+					class="form-control">
+					<option value="0">-</option>
+
+				</select>
+			</div>
+			<div class="mb-3 input-dark">
+				<label for="brand"
+					class="block fs-12 mb-1">Payment Method *</label>
+				<select id="brand"
+					[(ngModel)]="form.brand_id"
+					class="form-control">
+					<option value="0">-</option>
+				</select>
+			</div>
+			<div class="mb-3 input-dark">
+				<label for="brand"
+					class="block fs-12 mb-1">Shipping Method *</label>
+				<select id="brand"
+					[(ngModel)]="form.brand_id"
+					class="form-control">
+					<option value="0">-</option>
+				</select>
+			</div>
+		</div>
+		<div class="col-12 col-md-4 col-sm-6">
+			<div class="mb-3 input-dark">
+				<label for="category"
+					class="block fs-12 mb-1">Status *</label>
+				<select id="category"
+					[(ngModel)]=form.category_id
+					class="form-control">
+					<option value="1">Open</option>
+					<option value="2">Relase</option>
+				</select>
+			</div>
+		</div>
+		<div class="col-12">
+			<div class="mt-4 table-responsive">
+				<table class="table table-dark table-hover"
+					style="table-layout: auto;">
+					<thead>
+						<tr>
+							<th width="20px">#</th>
+							<th style="white-space: nowrap;">{{'barcode' | translate}}</th>
+							<th style="white-space: nowrap;">{{'name' | translate}}</th>
+							<th style="white-space: nowrap;">Purchase price</th>
+							<th width="100px">Qty</th>
+							<th>Discount</th>
+							<th>Total</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngIf="!productDetails || productDetails.length === 0">
+							<td colspan="8"
+								class="text-center">{{'no-data' | translate}}</td>
+						</tr>
+						<tr *ngFor="let product of productDetails; let i = index">
+							<td>{{i+1}}</td>
+							<td>
+								<span class="text-link">{{product.barcode}}</span>
+							</td>
+							<td style="white-space: nowrap;">{{product.name}}</td>
+							<!-- Kolom Purchase Price -->
+							<td class="input-inline-table">
+								<!-- Span untuk menampilkan dengan separator ribuan -->
+								<span *ngIf="!product.isEditPrice"
+									(click)="toggleEdit(product, 'price')">
+									{{ formatCurrency(product.purchase_price) }}
+								</span>
+
+								<!-- Input untuk mengedit nilai -->
+								<input *ngIf="product.isEditPrice"
+									[(ngModel)]="product.purchase_price"
+									(blur)="toggleEdit(product, 'price')"
+									type="number"
+									class="form-control" />
+							</td>
+
+							<!-- Kolom Qty -->
+							<td class="input-inline-table">
+								<span *ngIf="!product.isEditQty"
+									(click)="toggleEdit(product, 'qty')">
+									{{ product.qty | number }}
+								</span>
+								<input *ngIf="product.isEditQty"
+									[(ngModel)]="product.qty"
+									(blur)="toggleEdit(product, 'qty')"
+									type="number"
+									class="form-control" />
+							</td>
+
+							<!-- Kolom Discount -->
+							<td class="input-inline-table">
+								<span *ngIf="!product.isEditDiscount"
+									(click)="toggleEdit(product, 'discount')">
+									{{ product.discount | number }}
+								</span>
+								<input *ngIf="product.isEditDiscount"
+									[(ngModel)]="product.discount"
+									(blur)="toggleEdit(product, 'discount')"
+									type="number"
+									class="form-control" />
+							</td>
+							<td>{{ calculateTotal(product) | number:'1.0-0' }}</td>
+							<td>
+								<span class="text-link">Delete</span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="text-center">
+				<span class="text-link"
+					(click)="openDialogProduct()">{{'add-more-product' | translate}}</span>
+			</div>
+		</div>
+		<div class="col-12 mb-3">
+			<div class="d-flex gap-2">
+				<button class="button-blue">{{'save' | translate}}</button>
+				<button class="button-pink">{{'cancel' | translate}}</button>
+			</div>
+		</div>
+	</div>
+
+</div>

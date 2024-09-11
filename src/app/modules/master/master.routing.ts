@@ -7,6 +7,7 @@ import { EmployeComponent } from './pages/employe/employe.component';
 import { CreateProductComponent } from './pages/product/create-product/create-product.component';
 import { ProductComponent } from './pages/product/product.component';
 import { UpdateProductComponent } from './pages/product/update-product/update-product.component';
+import { SupplierComponent } from './pages/supplier/supplier.component';
 
 const routes: Routes = [
 	{
@@ -28,6 +29,10 @@ const routes: Routes = [
 	{
 		path: 'brand',
 		component: BrandComponent
+	},
+	{
+		path: 'supplier',
+		component: SupplierComponent
 	},
 	{
 		path: 'employes',

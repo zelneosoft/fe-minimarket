@@ -34,6 +34,9 @@
 						(click)="goTo('/master/products')"
 						[ngClass]="{ 'active': isMenuActive('/master/products') }">{{ 'product' | translate }}</div>
 					<div class="lh-1 item-child font-primary"
+						(click)="goTo('/master/supplier')"
+						[ngClass]="{ 'active': isMenuActive('/master/supplier') }">{{ 'supplier' | translate }}</div>
+					<div class="lh-1 item-child font-primary"
 						(click)="goTo('/master/employes')"
 						[ngClass]="{ 'active': isMenuActive('/master/employes') }">{{ 'staff' | translate }}</div>
 				</mat-expansion-panel>
@@ -43,15 +46,38 @@
 				[ngClass]="{ 'active': isMenuActive('/transation') }">
 				<img src="assets/images/icons/shop.svg"
 					alt="">
-				<div class="fw-bold fs-14 lh-1">{{ 'sales-order' | translate }}</div>
+				<div class="fw-bold fs-14 lh-1">{{ 'sales' | translate }}</div>
 			</div>
-			<div class="d-flex align-items-center gap-3 mt-3 menu"
+			<!-- <div class="d-flex align-items-center gap-3 mt-3 menu"
 				(click)="goTo('/transation')"
 				[ngClass]="{ 'active': isMenuActive('/transation') }">
 				<img src="assets/images/icons/shop.svg"
 					alt="">
-				<div class="fw-bold fs-14 lh-1">{{ 'purchase-order' | translate }}</div>
-			</div>
+				<div class="fw-bold fs-14 lh-1">{{ 'purchase' | translate }}</div>
+			</div> -->
+			<mat-accordion>
+				<mat-expansion-panel [expanded]="isExpantMenu('purchase')">
+					<mat-expansion-panel-header class="mt-3 menu">
+						<mat-panel-title class="item-parent-expant d-flex align-items-center gap-3">
+							<img src="assets/images/icons/shop.svg"
+								alt="">
+							<div class="fw-bold fs-14 lh-1 font-primary">{{ 'purchase' | translate }}</div>
+						</mat-panel-title>
+					</mat-expansion-panel-header>
+					<div class="lh-1 item-child font-primary"
+						(click)="goTo('/purchase/po')"
+						[ngClass]="{ 'active': isMenuActive('/purchase/po') }">{{ 'purchase-order' | translate }}
+					</div>
+					<div class="lh-1 item-child font-primary"
+						(click)="goTo('/purchase/gr')"
+						[ngClass]="{ 'active': isMenuActive('/purchase/gr') }">{{ 'goods-receipt' | translate }}
+					</div>
+					<div class="lh-1 item-child font-primary"
+						(click)="goTo('/purchase/pr')"
+						[ngClass]="{ 'active': isMenuActive('/purchase/pr') }">{{ 'purchase-return' | translate }}
+					</div>
+				</mat-expansion-panel>
+			</mat-accordion>
 			<div class="d-flex align-items-center gap-3 mt-3 menu"
 				(click)="goTo('/check-price')"
 				[ngClass]="{ 'active': isMenuActive('/check-price') }">

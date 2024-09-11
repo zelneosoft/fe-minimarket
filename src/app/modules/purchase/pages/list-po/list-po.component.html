@@ -1,0 +1,58 @@
+<div class="container-fluid">
+	<h4 class="mb-4 p-0">{{'list-po' | translate}}</h4>
+	<div class="d-flex justify-content-between align-items-center gap-3">
+		<div class="input-dark w-full">
+			<input type="text"
+				class="form-control"
+				placeholder="{{'search-po-number' | translate}}">
+		</div>
+		<div>
+			<button [routerLink]="['/purchase/po/create']"
+				class="button-blue">{{'new-po' | translate}}</button>
+		</div>
+	</div>
+	<div class="mt-4 table-responsive">
+		<table class="table table-dark table-hover">
+			<thead>
+				<tr>
+					<th width="20px">#</th>
+					<th>{{'barcode' | translate}}</th>
+					<th>{{'supplier' | translate}}</th>
+					<th>{{'status' | translate}}</th>
+					<th>{{'price' | translate}}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- <tr *ngIf="!products || products.length === 0">
+					<td colspan="6"
+						class="text-center">{{'no-data' | translate}}</td>
+				</tr> -->
+				<!-- <tr *ngFor="let product of products; let i = index">
+					<td>
+						{{ i + 1 }}
+					</td>
+					<td>
+						<span class="text-link"
+							[routerLink]="['/master/products/edit']"
+							[queryParams]="{ id: product.id }">{{product.barcode}}</span>
+					</td>
+					<td>{{product.name}}</td>
+					<td>{{product.category.name}}</td>
+					<td>{{product.brand.name}}</td>
+					<td>Rp. 20.000 ,-</td>
+				</tr> -->
+				<tr>
+					<td>1
+					</td>
+					<td>
+						<span class="text-link">PO24009212</span>
+					</td>
+					<td>PT. Mengudara Hingga Langit</td>
+					<td>Open</td>
+					<td>Rp. 20.000 ,-</td>
+			</tbody>
+		</table>
+	</div>
+
+
+</div>

@@ -53,6 +53,35 @@
 
 			</div>
 		</div>
+		<div class="col-12 col-md-6">
+			<div class="mb-3 input-dark">
+				<label for="phone"
+					class="block fs-12 mb-1">{{'phone' | translate}}</label>
+				<input type="text"
+					autocapitalize="words"
+					id="phone"
+					[(ngModel)]="form.phone"
+					class="form-control">
+			</div>
+			<div class="mb-3 input-dark">
+				<label for="email"
+					class="block fs-12 mb-1">{{'email' | translate}}</label>
+				<input type="text"
+					autocapitalize="words"
+					id="email"
+					[(ngModel)]="form.email"
+					class="form-control">
+			</div>
+			<div class="mb-3 input-dark">
+				<label for="pic"
+					class="block fs-12 mb-1">{{'pic_branch' | translate}}</label>
+				<input type="text"
+					autocapitalize="words"
+					id="pic"
+					[(ngModel)]="form.pic"
+					class="form-control">
+			</div>
+		</div>
 		<div class="col-12">
 			<div class="d-flex gap-2">
 				<button (click)="submit()"

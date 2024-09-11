@@ -24,6 +24,29 @@
 	}
 }
 
+.input-inline-table {
+	.form-label {
+		font-size: 14px;
+	}
+
+	input,
+	select {
+		background-color: transparent !important;
+		color: #ffffff;
+		border-color: transparent !important;
+		padding: 0 0;
+
+		&:focus {
+			outline: none !important;
+			color: #ffffff !important;
+		}
+	}
+
+	input::placeholder {
+		color: #969696;
+	}
+}
+
 .form-check-label {
 	font-size: 14px;
 }

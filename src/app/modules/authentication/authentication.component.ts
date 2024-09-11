@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
 import { LoginRequest, LoginResponse } from '../../core/models/authentication.model';
 import { AuthenticationService } from '../../core/services/api/authentication.service';
 import { LocalStorageService } from '../../core/services/ls.service';
@@ -30,7 +29,6 @@ export class AuthenticationComponent implements OnInit {
 	loadingBtn = false;
 
 	constructor(private router: Router,
-		public translate: TranslateService,
 		private authService: AuthenticationService,
 		private ls: LocalStorageService,
 		private snackbarService: SnackbarService

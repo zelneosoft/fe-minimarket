@@ -1,7 +1,7 @@
 <section>
 	<div class="dialog-content">
 		<div class="d-flex justify-content-between align-items-center">
-			<h6 class="m-0">{{'brand' | translate}}</h6>
+			<h6 class="m-0">{{'supplier' | translate}}</h6>
 			<img class="cursor-pointer"
 				(click)="close(false)"
 				src="assets/images/icons/close.svg"
@@ -15,6 +15,30 @@
 					id="name"
 					[(ngModel)]="form.name"
 					[ngClass]="!formValid.name ? 'border border-danger' : ''"
+					class="form-control">
+			</div>
+			<div class="mb-3 input-dark">
+				<label for="address"
+					class="block fs-12 mb-1">{{'address' | translate}}</label>
+				<input type="text"
+					id="address"
+					[(ngModel)]="form.address"
+					class="form-control">
+			</div>
+			<div class="mb-3 input-dark">
+				<label for="maps"
+					class="block fs-12 mb-1">{{'maps' | translate}}</label>
+				<input type="text"
+					id="maps"
+					[(ngModel)]="form.maps"
+					class="form-control">
+			</div>
+			<div class="mb-3 input-dark">
+				<label for="phone"
+					class="block fs-12 mb-1">{{'phone' | translate}}</label>
+				<input type="text"
+					id="phone"
+					[(ngModel)]="form.phone"
 					class="form-control">
 			</div>
 			<div class="form-check form-switch input-dark">
