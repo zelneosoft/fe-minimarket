@@ -4,7 +4,9 @@
 	}
 
 	input,
-	select {
+	select,
+	mat-select,
+	.mat-input-element {
 		background-color: #495057;
 		border-radius: 15px;
 		color: #ffffff;
@@ -19,7 +21,9 @@
 		}
 	}
 
-	input::placeholder {
+	input::placeholder,
+	mat-select::placeholder,
+	.mat-input-element::placeholder {
 		color: #969696;
 	}
 }

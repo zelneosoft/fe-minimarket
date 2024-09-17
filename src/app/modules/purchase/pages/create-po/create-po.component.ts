@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Branch } from '../../../../core/models/branch.model';
+import { Supplier } from '../../../../core/models/supplier.model';
+import { BranchService } from '../../../../core/services/api/branch.service';
+import { SupplierService } from '../../../../core/services/api/supplier.service';
 import { DialogProductComponent } from '../../components/dialog-product/dialog-product.component';
 
 @Component({
@@ -8,13 +12,19 @@ import { DialogProductComponent } from '../../components/dialog-product/dialog-p
 	styleUrls: ['./create-po.component.scss']
 })
 export class CreatePoComponent implements OnInit {
+
+	supplier: Supplier[] = [];
+	branch: Branch[] = [];
+
 	public form = {
 		id: 0,
-		barcode: '',
-		name: '',
-		description: '',
-		category_id: 1,
-		brand_id: 0
+		date: '',
+		supplier_id: 0,
+		supplier_address: '',
+		branch_id: 0,
+		payment_method: 0,
+		shipping_method: 0,
+		status: 1
 	};
 
 	public productDetails = [
@@ -43,33 +53,62 @@ export class CreatePoComponent implements OnInit {
 			isEditDiscount: false
 		}
 	]
-	// public productDetails: any = []
+
 	constructor(
-		public dialog: MatDialog
+		public dialog: MatDialog,
+		private supplierService: SupplierService,
+		private branchService: BranchService
 	) { }
 
 	ngOnInit(): void {
+		this.loadSupplier();
+		this.loadBranch();
 	}
 
-	// onBlur(product: any, field: string) {
-	// 	product.total = this.calculateTotal(product);
-	// 	if (!product.discount) {
-	// 		product.discount = 0;
-	// 	}
-	// 	if (!product.qty) {
-	// 		product.qty = 0;
-	// 	}
-	// 	if (!product.purchase_price) {
-	// 		product.purchase_price = 0;
-	// 	}
-	// }
+	loadSupplier(): void {
+		let params = {
+			search: "",
+			isActive: 1
+		};
+		this.supplierService.getSupplier(params).subscribe({
+			next: (r) => {
+				this.supplier = r.data;
+			},
+			error: (e) => {
+				console.log(e);
+			}
+		});
+	}
+
+	loadBranch(): void {
+		let params = {
+			search: "",
+			isActive: 1
+		};
+		this.branchService.getBranch(params).subscribe({
+			next: (r) => {
+				this.branch = r.data;
+			},
+			error: (e) => {
+				console.log(e);
+			}
+		});
+	}
+
+	onSupplierChange() {
+		const selectedSupplier = this.supplier.find(s => s.id == this.form.supplier_id);
+		if (selectedSupplier) {
+			this.form.supplier_address = selectedSupplier.address;
+		} else {
+			this.form.supplier_address = '-';
+		}
+	}
 
 	formatCurrency(value: any): string {
 		if (!value) return '0';
 		return parseFloat(value).toLocaleString('en-US', { maximumFractionDigits: 0 });
 	}
 
-	// Fungsi untuk toggle antara span dan input
 	toggleEdit(product: any, field: string): void {
 		if (field === 'price') {
 			product.isEditPrice = !product.isEditPrice;
@@ -80,7 +119,6 @@ export class CreatePoComponent implements OnInit {
 		}
 	}
 
-	// Fungsi untuk menghitung ulang total
 	calculateTotal(product: any): number {
 		const total = (product.purchase_price * product.qty) - product.discount;
 		return total;

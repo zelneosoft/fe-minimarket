@@ -8,26 +8,36 @@
 			<div class="mb-3 input-dark">
 				<label for="barcode"
 					class="block fs-12 mb-1">Date *</label>
-				<input type="text"
-					id="barcode"
-					autocomplete="off"
-					class="form-control">
+				<div class="container-date-picker">
+					<div class="date-picker">
+						<input matInput
+							[matDatepicker]="pickerEnding"
+							placeholder="MM/DD/YYYY"
+							readonly
+							class="form-control"
+							(click)="pickerEnding.open()">
+						<mat-datepicker #pickerEnding></mat-datepicker>
+					</div>
+				</div>
 			</div>
 			<div class="mb-3 input-dark">
-				<label for="category"
+				<label for="supplier_id"
 					class="block fs-12 mb-1">Supplier *</label>
-				<select id="category"
-					[(ngModel)]=form.category_id
+				<mat-select placeholder="{{'select-supplier' | translate}}"
+					[(ngModel)]=form.supplier_id
+					(change)="onSupplierChange()"
+					name="supplier_id"
 					class="form-control">
-					<option value="0">-</option>
-
-				</select>
+					<mat-option *ngFor="let item of supplier"
+						[value]="item.id">{{ item.name }}</mat-option>
+				</mat-select>
 			</div>
 			<div class="mb-3 input-dark">
-				<label for="barcode"
+				<label for="supplier_address"
 					class="block fs-12 mb-1">Supplier Address</label>
 				<input type="text"
-					id="barcode"
+					id="supplier_address"
+					[(ngModel)]="form.supplier_address"
 					readonly
 					autocomplete="off"
 					class="form-control">
@@ -35,44 +45,58 @@
 		</div>
 		<div class="col-12 col-md-4 col-sm-6">
 			<div class="mb-3 input-dark">
-				<label for="category"
+				<label for="branch"
 					class="block fs-12 mb-1">Branch *</label>
-				<select id="category"
-					[(ngModel)]=form.category_id
+				<mat-select placeholder="{{'select-branch' | translate}}"
+					[(ngModel)]=form.branch_id
+					name="branch"
 					class="form-control">
-					<option value="0">-</option>
-
-				</select>
+					<mat-option *ngFor="let item of branch"
+						[value]="item.id">{{ item.name }}</mat-option>
+				</mat-select>
 			</div>
 			<div class="mb-3 input-dark">
-				<label for="brand"
+				<label for="payment"
 					class="block fs-12 mb-1">Payment Method *</label>
-				<select id="brand"
-					[(ngModel)]="form.brand_id"
+				<mat-select placeholder="{{'select-payment' | translate}}"
+					[(ngModel)]=form.payment_method
+					name="payment"
 					class="form-control">
-					<option value="0">-</option>
-				</select>
+					<mat-option [value]="1">Transfer</mat-option>
+					<mat-option [value]="2">Cash</mat-option>
+				</mat-select>
 			</div>
 			<div class="mb-3 input-dark">
-				<label for="brand"
+				<label for="shipping"
 					class="block fs-12 mb-1">Shipping Method *</label>
-				<select id="brand"
-					[(ngModel)]="form.brand_id"
+				<mat-select placeholder="{{'select-shipping' | translate}}"
+					[(ngModel)]=form.shipping_method
+					name="shipping"
 					class="form-control">
-					<option value="0">-</option>
-				</select>
+					<mat-option [value]="1">Self Pickup</mat-option>
+					<mat-option [value]="2">Delivery By Supplier</mat-option>
+				</mat-select>
 			</div>
 		</div>
 		<div class="col-12 col-md-4 col-sm-6">
 			<div class="mb-3 input-dark">
-				<label for="category"
-					class="block fs-12 mb-1">Status *</label>
-				<select id="category"
-					[(ngModel)]=form.category_id
+				<label for="barcode"
+					class="block fs-12 mb-1">Shipping Amount</label>
+				<input type="number"
+					id="barcode"
+					autocomplete="off"
 					class="form-control">
-					<option value="1">Open</option>
-					<option value="2">Relase</option>
-				</select>
+			</div>
+			<div class="mb-3 input-dark">
+				<label for="status"
+					class="block fs-12 mb-1">Status *</label>
+				<mat-select placeholder="{{'select-status' | translate}}"
+					[(ngModel)]=form.status
+					name="status"
+					class="form-control">
+					<mat-option [value]="1">Open</mat-option>
+					<mat-option [value]="2">Release</mat-option>
+				</mat-select>
 			</div>
 		</div>
 		<div class="col-12">
@@ -84,9 +108,9 @@
 							<th width="20px">#</th>
 							<th style="white-space: nowrap;">{{'barcode' | translate}}</th>
 							<th style="white-space: nowrap;">{{'name' | translate}}</th>
-							<th style="white-space: nowrap;">Purchase price</th>
+							<th width="157px">Purchase price</th>
 							<th width="100px">Qty</th>
-							<th>Discount</th>
+							<th width="100px">Discount</th>
 							<th>Total</th>
 							<th></th>
 						</tr>
@@ -99,18 +123,15 @@
 						<tr *ngFor="let product of productDetails; let i = index">
 							<td>{{i+1}}</td>
 							<td>
-								<span class="text-link">{{product.barcode}}</span>
+								{{product.barcode}}
 							</td>
 							<td style="white-space: nowrap;">{{product.name}}</td>
-							<!-- Kolom Purchase Price -->
 							<td class="input-inline-table">
-								<!-- Span untuk menampilkan dengan separator ribuan -->
 								<span *ngIf="!product.isEditPrice"
 									(click)="toggleEdit(product, 'price')">
 									{{ formatCurrency(product.purchase_price) }}
 								</span>
 
-								<!-- Input untuk mengedit nilai -->
 								<input *ngIf="product.isEditPrice"
 									[(ngModel)]="product.purchase_price"
 									(blur)="toggleEdit(product, 'price')"
@@ -118,7 +139,6 @@
 									class="form-control" />
 							</td>
 
-							<!-- Kolom Qty -->
 							<td class="input-inline-table">
 								<span *ngIf="!product.isEditQty"
 									(click)="toggleEdit(product, 'qty')">
@@ -131,7 +151,6 @@
 									class="form-control" />
 							</td>
 
-							<!-- Kolom Discount -->
 							<td class="input-inline-table">
 								<span *ngIf="!product.isEditDiscount"
 									(click)="toggleEdit(product, 'discount')">

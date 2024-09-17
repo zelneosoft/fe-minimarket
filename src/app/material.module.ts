@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatRippleModule } from '@angular/material/core';
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatMenuModule } from '@angular/material/menu';
@@ -23,6 +24,8 @@ const ExportMatModule = [
 	MatTabsModule,
 	MatSelectModule,
 	MatExpansionModule,
+	MatDatepickerModule,
+	MatNativeDateModule,
 	MatProgressSpinnerModule
 ];
 
