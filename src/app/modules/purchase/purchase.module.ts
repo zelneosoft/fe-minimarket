@@ -7,6 +7,7 @@ import { DialogProductComponent } from './components/dialog-product/dialog-produ
 import { CreatePoComponent } from './pages/create-po/create-po.component';
 import { ListPoComponent } from './pages/list-po/list-po.component';
 import { PurchaseRoutingModule } from './purchase.routing';
+import { UpdatePoComponent } from './pages/update-po/update-po.component';
 
 
 
@@ -14,7 +15,8 @@ import { PurchaseRoutingModule } from './purchase.routing';
 	declarations: [
 		ListPoComponent,
 		CreatePoComponent,
-		DialogProductComponent
+		DialogProductComponent,
+  UpdatePoComponent
 	],
 	imports: [
 		CommonModule,

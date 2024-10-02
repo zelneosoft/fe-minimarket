@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreatePoComponent } from './pages/create-po/create-po.component';
 import { ListPoComponent } from './pages/list-po/list-po.component';
+import { UpdatePoComponent } from './pages/update-po/update-po.component';
 
 const routes: Routes = [
 	{
@@ -12,7 +13,11 @@ const routes: Routes = [
 	{
 		path: 'po/create',
 		component: CreatePoComponent
-	}
+	},
+	{
+		path: 'po/edit',
+		component: UpdatePoComponent
+	},
 ];
 
 @NgModule({

@@ -1,5 +1,5 @@
 <div class="container-fluid">
-	<h4 class="mb-4 p-0">{{'new-po' | translate}}</h4>
+	<h4 class="mb-4 p-0">{{'edit-po' | translate}}</h4>
 	<div class="d-flex justify-content-between align-items-center gap-3">
 	</div>
 
@@ -13,7 +13,7 @@
 						<input matInput
 							[matDatepicker]="pickerEnding"
 							placeholder="MM/DD/YYYY"
-							[(ngModel)]=form.date
+							[(ngModel)]=form.purchase_date
 							readonly
 							class="form-control"
 							[ngClass]="!formValid.date ? 'border border-2 border-danger' : ''"
@@ -63,7 +63,7 @@
 				<label for="payment"
 					class="block fs-12 mb-1">{{'payment-method' | translate}} *</label>
 				<mat-select placeholder="{{'select-payment' | translate}}"
-					[(ngModel)]=form.payment_method
+					[(ngModel)]=form.payment_method_id
 					name="payment"
 					[ngClass]="!formValid.payment ? 'border border-2 border-danger' : ''"
 					class="form-control">
@@ -75,7 +75,7 @@
 				<label for="shipping"
 					class="block fs-12 mb-1">{{'shipping-method' | translate}} *</label>
 				<mat-select placeholder="{{'select-shipping' | translate}}"
-					[(ngModel)]=form.shipping_method
+					[(ngModel)]=form.shipping_method_id
 					name="shipping"
 					[ngClass]="!formValid.shipping ? 'border border-2 border-danger' : ''"
 					class="form-control">
@@ -201,7 +201,10 @@
 		<div class="col-12 mb-3">
 			<div class="d-flex gap-2">
 				<button class="button-blue"
-					(click)="submit()">{{'save' | translate}}</button>
+					*ngIf="form.status != 'RELEASE'"
+					(click)="submit()">{{'update' | translate}}</button>
+				<button class="button-primary"
+					(click)="close()">{{'print' | translate}}</button>
 				<button class="button-pink"
 					(click)="close()">{{'cancel' | translate}}</button>
 			</div>

@@ -51,7 +51,7 @@ export function createTranslateLoader(http: HttpClient) {
 			useValue: {
 				duration: 3000,
 				horizontalPosition: 'center',
-				verticalPosition: 'top'
+				verticalPosition: 'bottom'
 			}
 		}
 	],

@@ -8,13 +8,13 @@ export class SnackbarService {
 	constructor(private snackBar: MatSnackBar) { }
 
 	showSuccessSnackbar(message: string) {
-		this.snackBar.open(message, '', {
+		this.snackBar.open(message, '👌', {
 			panelClass: ['success-snackbar']
 		});
 	}
 
 	showErrorSnackbar(message: string) {
-		this.snackBar.open(message, '', {
+		this.snackBar.open(message, '👌', {
 			panelClass: ['error-snackbar']
 		});
 	}

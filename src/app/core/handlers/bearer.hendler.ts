@@ -31,9 +31,9 @@ export class BearerHandler extends HttpHandler {
 		return this.next.handle(clone).pipe(
 			catchError((response: HttpErrorResponse) => {
 				if (response.status === 401) {
-					console.log("Harus login dulu")
 					this.snackbar.showErrorSnackbar('Login expired')
 					this.ls.clear();
+					this.dialog.closeAll();
 					this.router.navigate(['/authentication']);
 				}
 				return throwError(response);

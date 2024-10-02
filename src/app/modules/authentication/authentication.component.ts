@@ -71,7 +71,7 @@ export class AuthenticationComponent implements OnInit {
 			(e) => {
 				this.loadingBtn = false;
 				console.error('Login failed', e.error.message);
-				this.snackbarService.showErrorSnackbar(e.error.message);
+				this.snackbarService.showErrorSnackbar(e.error.message || 'something is wrong');
 			}
 		);
 	}

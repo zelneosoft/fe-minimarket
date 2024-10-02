@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { LoadingService } from '../../core/services/loading.service';
@@ -20,6 +20,7 @@ export class ToolbarComponent implements OnInit {
 	temaTxt = 'Tema Gelap';
 
 	constructor(
+		private cdr: ChangeDetectorRef,
 		private translate: TranslateService,
 		private ls: LocalStorageService,
 		private loadingService: LoadingService,
@@ -32,6 +33,7 @@ export class ToolbarComponent implements OnInit {
 	ngOnInit(): void {
 		this.loadingService.isLoading.subscribe((resp) => {
 			this.loading = resp;
+			this.cdr.detectChanges();
 		});
 	}
 
